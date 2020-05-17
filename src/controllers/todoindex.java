@@ -32,16 +32,48 @@ public class todoindex extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        EntityManager em = DBUtil.createEntityManager();
 
-        List<Todo> todos = em.createNamedQuery("getAlltodos", Todo.class) .getResultList();
 
-        em.close();
 
-        request.setAttribute("todos", todos);
+        protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        	 EntityManager em = DBUtil.createEntityManager();
 
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/todos/index.jsp");
-        rd.forward(request, response);
+        	 List<Todo> todos;
+
+             String id2 = request.getParameter("id");
+
+             if(id2==null) {
+            	 todos = em.createNamedQuery("getAlltodos", Todo.class) .getResultList();
+            	 request.setAttribute("selecttype", "0");
+
+            	} else {
+
+            		Integer id = Integer.valueOf(id2);
+
+            		if(id == 0){
+            			todos = em.createNamedQuery("getAlltodos", Todo.class) .getResultList();
+            			request.setAttribute("selecttype", "0");
+
+
+            			} else if (id == 1){
+            				todos = em.createNamedQuery("getjobtodos", Todo.class) .getResultList();
+            				request.setAttribute("selecttype", "1");
+
+
+            			} else if (id == 2){
+            				todos = em.createNamedQuery("getprivatetodos", Todo.class) .getResultList();
+            				request.setAttribute("selecttype", "2");
+
+            			} else {
+            				todos = em.createNamedQuery("getAlltodos", Todo.class) .getResultList();
+            				request.setAttribute("selecttype", "0");
+
+            	      }
+
+             }
+
+            request.setAttribute("todos", todos);
+            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/todos/index.jsp");
+            rd.forward(request, response);
+        }
     }
-}

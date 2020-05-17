@@ -35,6 +35,8 @@ public class DestroyServlet extends HttpServlet {
 
             // セッションスコープからメッセージのIDを取得して
             // 該当のIDのメッセージ1件のみをデータベースから取得
+
+            String selecttype = request.getParameter("selecttype");
             Todo t = em.find(Todo.class, Integer.parseInt(request.getParameter("id")));
             em.getTransaction().begin();
             em.remove(t);       // データ削除
@@ -43,6 +45,6 @@ public class DestroyServlet extends HttpServlet {
 
 
             // indexページへリダイレクト
-            response.sendRedirect(request.getContextPath() + "/todoindex");
+            response.sendRedirect(request.getContextPath() + "/todoindex?id="+ selecttype);
         }
     }

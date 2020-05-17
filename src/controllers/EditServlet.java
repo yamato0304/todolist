@@ -50,6 +50,10 @@ public class EditServlet extends HttpServlet {
             Integer type2 = Integer.valueOf(type);
             t.settype(type2);
 
+            String selecttype = request.getParameter("selecttype");
+            System.out.println(selecttype+11111);
+
+
 
 
             em.getTransaction().begin();
@@ -58,6 +62,6 @@ public class EditServlet extends HttpServlet {
 
 
             // indexページへリダイレクト
-            response.sendRedirect(request.getContextPath() + "/todoindex");
+            response.sendRedirect(request.getContextPath() + "/todoindex?id="+ selecttype);
         }
     }

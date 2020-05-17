@@ -61,6 +61,7 @@ public class todoindex4 extends HttpServlet {
             em.close();
 
             request.setAttribute("todos", todos);
+            request.setAttribute("selecttype", type);
 
             RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/todos/index.jsp");
             rd.forward(request, response);
