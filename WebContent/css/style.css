@@ -7,8 +7,8 @@ body {
 
 #header {
     width: 100%;
-    height: 500px;
-    background-color: red;
+    height: 80px;
+    background-color:#668ad8;
 }
 
 #content {
@@ -66,5 +66,28 @@ button {
 #footer {
     text-align: center;
 }
-
+tr.row1 {
+        background-color: #f2f2f2;
+}
+tr.row0 {
+        background-color: #ffffff;
+}
+#flush_success{
+    width: 100%;
+    padding-top: 28px;
+    padding-left: 2%;
+    padding-bottom: 28px;
+    margin-bottom: 15px;
+    color: #155724;
+    background-color: #d4edda;
+}
+#flush_error {
+    width: 100%;
+    padding-top: 28px;
+    padding-left: 2%;
+    padding-bottom: 28px;
+    margin-bottom: 15px;
+    color: #721c24;
+    background-color: #f8d7da;
+}
 

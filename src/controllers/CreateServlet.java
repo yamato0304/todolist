@@ -41,13 +41,16 @@ public class CreateServlet extends HttpServlet {
             String content = request.getParameter("content");
             t.setcontent(content);
 
-            String deadline = request.getParameter("deadline");
-            Date deadline2 = Date.valueOf(deadline);
-            t.setdeadline(deadline2);
+            Integer user_id = Integer.valueOf(request.getParameter("user_id"));
+            t.setUserid(user_id);
 
-            String type = request.getParameter("type");
-            Integer type2 = Integer.valueOf(type);
-            t.settype(type2);
+
+            Date deadline = Date.valueOf(request.getParameter("deadline"));
+            t.setdeadline(deadline);
+
+
+            Integer type = Integer.valueOf(request.getParameter("type"));
+            t.settype(type);
 
             em.getTransaction().begin();
             em.persist(t);

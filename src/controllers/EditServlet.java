@@ -18,50 +18,45 @@ import utils.DBUtil;
  */
 @WebServlet("/edit")
 public class EditServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public EditServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public EditServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-    /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-     */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-    	EntityManager em = DBUtil.createEntityManager();
+		EntityManager em = DBUtil.createEntityManager();
 
-            // セッションスコープからメッセージのIDを取得して
-            // 該当のIDのメッセージ1件のみをデータベースから取得
-            Todo t = em.find(Todo.class, Integer.parseInt(request.getParameter("id")));
+		// セッションスコープからメッセージのIDを取得して
+		// 該当のIDのメッセージ1件のみをデータベースから取得
+		Todo t = em.find(Todo.class, Integer.parseInt(request.getParameter("id")));
 
-            String content = request.getParameter("content");
-            t.setcontent(content);
+		String content = request.getParameter("content");
+		t.setcontent(content);
 
-            String deadline = request.getParameter("deadline");
-            Date deadline2 = Date.valueOf(deadline);
-            t.setdeadline(deadline2);
+		Date deadline = Date.valueOf(request.getParameter("deadline"));
+		t.setdeadline(deadline);
 
-            String type = request.getParameter("type");
-            Integer type2 = Integer.valueOf(type);
-            t.settype(type2);
+		Integer type = Integer.valueOf(request.getParameter("type"));
+		t.settype(type);
 
-            String selecttype = request.getParameter("selecttype");
-            System.out.println(selecttype+11111);
+		String selecttype = request.getParameter("selecttype");
 
+		em.getTransaction().begin();
+		em.getTransaction().commit();
+		em.close();
 
-
-
-            em.getTransaction().begin();
-            em.getTransaction().commit();
-            em.close();
-
-
-            // indexページへリダイレクト
-            response.sendRedirect(request.getContextPath() + "/todoindex?id="+ selecttype);
-        }
-    }
+		// indexページへリダイレクト
+		response.sendRedirect(request.getContextPath() + "/todoindex?id=" + selecttype);
+	}
+}
