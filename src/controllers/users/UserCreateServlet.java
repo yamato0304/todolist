@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,7 +37,7 @@ public class UserCreateServlet extends HttpServlet {
 		if (_token != null && _token.equals(request.getSession().getId())) {
 			EntityManager em = DBUtil.createEntityManager();
 
-			Integer admin = Integer.valueOf(request.getParameter("admin_flag"));
+			Integer admin = Integer.valueOf(request.getParameter("admin"));
 
 			User e = new User();
 
@@ -57,13 +58,14 @@ public class UserCreateServlet extends HttpServlet {
 
 				if (admin == 0) {
 
-					response.sendRedirect(request.getContextPath() + "/usernew?admin=0");
+					 RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/employees/new_notadmin.jsp");
+			            rd.forward(request, response);
 
 				}
 				if (admin == 1) {
 
-					response.sendRedirect(request.getContextPath() + "/usernew?admin=1");
-
+					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/employees/new.jsp");
+		            rd.forward(request, response);
 				}
 
 			} else {

@@ -6,6 +6,7 @@
 
         <form method="POST" action="<c:url value='/usercreate' />">
             <c:import url="form.jsp" />
+
         </form>
 
         <p><input type="button" class="buttonclass" value="ユーザー一覧へ戻る"

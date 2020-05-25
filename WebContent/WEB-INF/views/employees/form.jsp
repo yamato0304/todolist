@@ -12,7 +12,7 @@
 	</div>
 </c:if>
 
-<input type="hidden" name="admin" value="${admin}" />
+
 
 <label for="name">氏名</label>
 <br />
@@ -36,6 +36,7 @@
 </select>
 <br />
 <br />
+<input type="hidden" name="admin" value=1 />
 
 <input type="hidden" name="_token" value="${_token}" />
 <button class="buttonclass" type="submit">作成</button>

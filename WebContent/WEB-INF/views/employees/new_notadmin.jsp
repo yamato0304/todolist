@@ -23,9 +23,9 @@
 			<br />
 			<input type="hidden" name="admin_flag" value="0" />
 			<input type="hidden" name="_token" value="${_token}" />
+			<input type="hidden" name="admin" value=0 />
 
 			<button class="buttonclass" type="submit">作成</button>
-			<input type="hidden" name="admin" value="${admin}" />
 		</form>
 
 		<p>

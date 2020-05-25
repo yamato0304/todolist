@@ -27,7 +27,7 @@ public class UsersNewservlet extends HttpServlet {
 	}
 
 	/**
-	 * ｗｗｗ
+	 *
 	 *
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
