@@ -16,7 +16,7 @@
 </c:if>
 
 		<form method="POST" action="<c:url value='/usercreate' />">
-			<label for="name">氏名</label><br /> <input type="text" name="name"
+			<label for="name">ログインID</label><br /> <input type="text" name="name"
 				value="${employee.name}" /> <br />
 			<br /> <label for="password">パスワード</label><br /> <input
 				type="password" name="password" /> <br />
@@ -25,7 +25,7 @@
 			<input type="hidden" name="_token" value="${_token}" />
 			<input type="hidden" name="admin" value=0 />
 
-			<button class="buttonclass" type="submit">作成</button>
+			<button class="buttonclass" type="submit">登録</button>
 		</form>
 
 		<p>

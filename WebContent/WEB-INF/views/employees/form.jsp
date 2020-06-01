@@ -14,7 +14,7 @@
 
 
 
-<label for="name">氏名</label>
+<label for="name">ログインID</label>
 <br />
 <input type="text" name="name" value="${employee.name}" />
 <br />
@@ -39,4 +39,4 @@
 <input type="hidden" name="admin" value=1 />
 
 <input type="hidden" name="_token" value="${_token}" />
-<button class="buttonclass" type="submit">作成</button>
+<button class="buttonclass" type="submit">登録</button>

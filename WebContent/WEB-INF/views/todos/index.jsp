@@ -13,15 +13,25 @@
 				<li>
 					<form method="POST"
 						action="${pageContext.request.contextPath}/edit">
-
 						<input type="hidden" name="selecttype" value="${selecttype}" /> <input
 							type="text" style="display: none" name="id" value="${todo.id}" />
 						<input type="text" name="content" value="${todo.content}" /> <input
 							type="date" name="deadline" size="7" value="${todo.deadline}" />
-						<input type="text" name="type" style="width: 10px;"
-							value="${todo.type}" /> <span class="typename"> <c:out
-								value="${todo.gettypename()}" />
-						</span>
+
+						<c:choose>
+							<c:when test="${todo.type == 1}">
+								<input type="radio" id="type1" name="type" value="1" checked>
+								<label for="typechoice2">仕事</label>
+								<input type="radio" id="type2" name="type" value="2">
+								<label for="typechoice3">プライベート</label>
+							</c:when>
+							<c:otherwise>
+								<input type="radio" id="type1" name="type" value="1">
+								<label for="typechoice2">仕事</label>
+								<input type="radio" id="type2" name="type" value="2" checked>
+								<label for="typechoice3">プライベート</label>
+							</c:otherwise>
+						</c:choose>
 						<button class="buttonclass" type="submit">内容変更</button>
 						<input class="buttonclass" type="button" value="削除"
 							onclick="location.href='${pageContext.request.contextPath}/destroy?id=${todo.id}&selecttype=${selecttype}'">
@@ -38,12 +48,12 @@
 			<div>
 				<input type="radio" id="all" name="type" value="0"> <label
 					for="typechoice1">全て</label> <input type="radio" id="type1"
-					name="type" value="1"> <label for="typechoice2">1:仕事</label>
+					name="type" value="1"> <label for="typechoice2">仕事</label>
 
 				<input type="radio" id="type2" name="type" value="2"> <label
-					for="typechoice3">2:プライベート</label>
-					<input
-							type="text" style="display: none" name="id" value="${sessionScope.login_user.id}" />
+					for="typechoice3">プライベート</label> <input type="text"
+					style="display: none" name="id"
+					value="${sessionScope.login_user.id}" />
 
 			</div>
 			<div>

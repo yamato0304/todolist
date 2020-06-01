@@ -5,6 +5,17 @@
 	<c:param name="content">
 		<h2>新規ToDo</h2>
 
+		<c:if test="${errors != null}">
+	<div id="flush_error">
+		入力内容にエラーがあります。<br />
+		<c:forEach var="error" items="${errors}">
+            ・<c:out value="${error}" />
+			<br />
+		</c:forEach>
+
+	</div>
+</c:if>
+
 		<form method="POST" action="${pageContext.request.contextPath}/create">
             <input type="hidden" name="user_id" value="${sessionScope.login_user.id}" />
 			<label for="title">内容</label><br /> <input
